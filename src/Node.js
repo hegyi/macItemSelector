@@ -1,4 +1,5 @@
-function Node(name) {
+function Node(id, name) {
+  this.id = id;
   this.name = name;
   this.states = ["unselected", "selected", "partially selected"];
   this.state = 0;
@@ -38,7 +39,7 @@ Node.prototype.notifyParent = function() {
       node.setState("selected");
     } else if(node.hasOnlyUnselectedChildren()) {
       node.setState("unselected");
-    } else if(node.detectPartiallySelected()){
+    } else if(node.hasSelectedAndUnselectedOrPartiallySelectedChildren()){
       node.setState("partially selected");
     }
     node.notifyParent();
@@ -65,7 +66,7 @@ Node.prototype.hasOnlyUnselectedChildren = function() {
   return true;
 }
 
-Node.prototype.detectPartiallySelected = function() {
+Node.prototype.hasSelectedAndUnselectedOrPartiallySelectedChildren = function() {
   var children = this.getChildren();
   var selected = 0;
   var unselected = 0

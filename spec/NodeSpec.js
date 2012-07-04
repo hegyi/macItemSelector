@@ -2,11 +2,11 @@
 describe("Node", function() {
   var parent, child1, child2, child3, child4;
   beforeEach(function() {
-    parent = new Node("parent");
-    child1 = new Node("child1");
-    child2 = new Node("child2");
-    child3 = new Node("child3");
-    child4 = new Node("child4");
+    parent = new Node("p","parent");
+    child1 = new Node("c1","child1");
+    child2 = new Node("c2","child2");
+    child3 = new Node("c3","child3");
+    child4 = new Node("c4","child4");
     child1.addChild(child3);
     child1.addChild(child4);
     parent.addChild(child1);
@@ -80,4 +80,6 @@ describe("Node", function() {
     child4.toggle();
     expect([parent, child1,child2,child3,child4]).toBeUnselected();
   });
+
+
 });
