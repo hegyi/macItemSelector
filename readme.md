@@ -13,7 +13,7 @@ This is a single jQuery plugin for creating Mac like item selector.
 <link rel="stylesheet" type="text/css" href="css/mac-item-selector.css"></link>
 ```
 
-* Use the plugin on an empty div selector:
+* Use the plugin on an *empty div* selector:
 
 ```javascript
 $(document).ready(function() {
@@ -31,7 +31,16 @@ $(document).ready(function() {
        ]
     }
   ]
-
+  // create the plugin
   $("#my_conatiner").macItemSelector({nodes: exampleNodes });
 });
 ```
+
+### Plugin initialization parameters
+* nodes: array of hashes (array of nodes for the initialization)
+* json: string (raw json for the initialization)
+* allowClickOnRow: boolean (allow to navigate by clicking on the row instead of just clicking on the text)
+* hasChildrenSymbol: `function() { return "string"; }` (overriding the default symbol for non-empty nodes)
+* nameStyle: `function(name) { return <b>name</b>; }` (overriding the default node name rendering)
+
+
