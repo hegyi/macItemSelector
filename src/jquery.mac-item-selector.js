@@ -68,7 +68,6 @@
 
     function toggle(id) {
       var node = findNode(id);
-      console.log(node);
       if(node != null) {
         node.toggle();
         render();
