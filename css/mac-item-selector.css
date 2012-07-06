@@ -1,0 +1,57 @@
+.mac-item-selector-column {
+  float: left;
+  border: 1px solid #637190;
+  background: #7AA5FF;
+  margin: 5px;
+  padding: 2px;
+}
+
+.mac-item-selector-row {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #748ABB;
+  background: #99B9FF;
+}
+.mac-item-selector-row:hover {
+  background: #A0BAC5;
+}
+.mac-item-selector-checkbox {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #226B9F;
+}
+
+.mac-item-selector-checkbox-selected {
+  background: #A8FFA8;
+}
+.mac-item-selector-checkbox-unselected {
+  background: #ffffff;
+}
+.mac-item-selector-name {
+  cursor: pointer;
+}
+
+.mac-item-selector-checkbox-partially-filled {
+  background: #FFF28D;
+}
+
+.mac-item-selector-has-more {
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #637190;
+}
+
+.mac-item-selector-left {
+  margin: 5px;
+  float: left;
+}
+
+.mac-item-selector-right {
+  margin: 5px;
+  float: right;
+}
+.mac-item-selector-clear {
+  clear: both;
+}

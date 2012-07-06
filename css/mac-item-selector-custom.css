@@ -1,0 +1,65 @@
+#container3 .mac-item-selector-column {
+  font-size: 18px;
+  font-family: arial;
+  float: left;
+  border: 1px solid #c4c4c4;
+  background: #fff;
+  margin: 0px;
+}
+
+#container3 .mac-item-selector-row {
+  padding: 15px;
+  margin: 10px;
+  border: 0;
+  background: #fff;
+  cursor: pointer;
+}
+
+#container3 .mac-item-selector-row:hover {
+  background: #1f9fc3;
+  color: #fff;
+}
+
+#container3 .mac-item-selector-checkbox {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #c4c4c4;
+}
+
+#container3 .mac-item-selector-checkbox-selected {
+  border: 0;
+  background: #4ecf2c;
+}
+#container3 .mac-item-selector-checkbox-unselected {
+  border: 0;
+  background: #c4c4c4;
+}
+#container3 .mac-item-selector-checkbox-partially-filled {
+  border: 0;
+  background: #ded544;
+}
+
+#container3 .mac-item-selector-name {
+  cursor: pointer;
+}
+
+#container3 .mac-item-selector-has-more {
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #637190;
+}
+
+#container3 .mac-item-selector-left {
+  margin: 5px;
+  float: left;
+}
+
+#container3 .mac-item-selector-right {
+  margin: 5px;
+  float: right;
+}
+#container3 .mac-item-selector-clear {
+  clear: both;
+}

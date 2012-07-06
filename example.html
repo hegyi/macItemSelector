@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TITLE</title>
+  </head>
+  <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+    <script src="src/jquery.mac-item-selector.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/mac-item-selector.css">
+    <link rel="stylesheet" type="text/css" href="css/mac-item-selector-custom.css">
+    <style>
+      .clear {
+        clear:both;
+      }
+      .example {
+        margin: 25px;
+      }
+
+      #output {
+        border: 1px solid #000;
+        width: 500px;
+        display: none;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $('#getJSON').click(function(e) {
+          e.preventDefault();
+          $("#output").html($("#container1").macItemSelector("selectedNodesAsJSON"));
+          $("#output").show();
+        });
+
+      var json2 =  [
+        {
+          name: "component 1",
+          id: "c1",
+          children: [
+          {
+            name: "story 1",
+            id: "s1",
+            children: [
+            {
+              name: "task 1",
+              id: "t1"
+            },
+            {
+              name: "task 2",
+              id: "t2"
+            }
+            ]
+          },
+          {
+            name: "story 2",
+            id: "s2",
+            children: [
+            {
+              name: "task 3",
+              id: "t3"
+            }
+            ]
+          },
+          {
+            name: "story 3",
+            id: "s3",
+            children: [
+
+            ]
+          },
+          {
+            name: "component 3",
+            id: "c3",
+            children: [
+
+            ]
+          },
+          {
+            name: "component 4",
+            id: "c4",
+            children: [
+            {
+              name: "story 6",
+              id: "s6",
+              children: [
+
+              ]
+            },
+            {
+              name: "story 7",
+              id: "s7",
+              children: [
+              {
+                name: "task 5",
+                id: "t5"
+              }
+              ]
+            }
+            ]
+          }
+          ]
+        },
+        {
+          name: "component 2",
+          id: "c2",
+          children: [
+          {
+            name: "story 4",
+            id: "s4",
+            children: [
+            {
+              name: "task 3",
+              id: "t6"
+            },
+            {
+              name: "task 4",
+              id: "t4"
+            }
+            ]
+          },
+          {
+            name: "story 5",
+            id: "s5"
+          }
+          ]
+        }
+        ];
+
+        $("#container1").macItemSelector({json: json2 });
+
+        $("#container2").macItemSelector({json: json2,
+          nameStyle: function(name) { return '<b>' + name +'</b>';},
+          hasChildrenSymbol: function() { return "this row has children"; }
+        });
+
+        $("#container3").macItemSelector({json: json2,
+          allowClickOnRow: true,
+          hasChildrenSymbol: function() {return "&rarr;";}
+        });
+      });
+    </script>
+  </body>
+
+  <h3>Default</h3>
+  <div id="container1" class="example"></div>
+
+  <div class="clear"></div>
+  <button id="getJSON">get selected leaf elements</button>
+  <div id="output"></div>
+  <h3>Customized text and children indicator</h3>
+  <div id="container2" class="example"></div>
+
+  <div class="clear"></div>
+
+  <h3>Customized CSS</h3>
+  <div id="container3" class="example"></div>
+
+</html>

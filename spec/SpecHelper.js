@@ -25,10 +25,10 @@ beforeEach(function() {
       }
       return true;
     },
-    toBePartiallySelected: function() {
+    toBePartiallyFilled: function() {
       var array = this.actual;
       for(i in array) {
-        if(!array[i].isPartiallySelected()) {
+        if(!array[i].isPartiallyFilled()) {
           this.message = function () {
             return "The node is not partially selected, index: " + i;
           }

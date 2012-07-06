@@ -1,4 +1,10 @@
 describe("NodeBuilder", function() {
+  var element = null;
+  beforeEach(function() {
+    element = $('<div></div>');
+    $(element).macItemSelector();
+  });
+
   it("should build a node tree from JSON", function(){
     var json = [
       {
@@ -29,11 +35,10 @@ describe("NodeBuilder", function() {
         children: []
       }
     ]
-    nodes = new NodeBuilder(json).build();
+    nodes = $(element).macItemSelector("createNodesFromJson", json);
     expect(nodes[0].name).toBe("component 1");
     expect(nodes[1].name).toBe("component 2");
     expect(nodes[0].children[0].name).toBe("story 1");
     expect(nodes[0].children[0].children[1].name).toBe("inner 2");
-    console.log(nodes);
   });
 });

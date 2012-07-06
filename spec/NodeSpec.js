@@ -2,11 +2,14 @@
 describe("Node", function() {
   var parent, child1, child2, child3, child4;
   beforeEach(function() {
-    parent = new Node("p","parent");
-    child1 = new Node("c1","child1");
-    child2 = new Node("c2","child2");
-    child3 = new Node("c3","child3");
-    child4 = new Node("c4","child4");
+    element = $('<div></div>');
+    $(element).macItemSelector();
+
+    parent = $(element).macItemSelector("createNode","p","parent");
+    child1 = $(element).macItemSelector("createNode","c1","child1");
+    child2 = $(element).macItemSelector("createNode","c2","child2");
+    child3 = $(element).macItemSelector("createNode","c3","child3");
+    child4 = $(element).macItemSelector("createNode","c4","child4");
     child1.addChild(child3);
     child1.addChild(child4);
     parent.addChild(child1);
@@ -31,28 +34,28 @@ describe("Node", function() {
     expect([parent, child1,child2,child3,child4]).toBeUnselected();
   });
 
-  it("should partially select the parent nodes when there are selected and unselected children", function() {
+  it("should partially fill the parent nodes when there are selected and unselected children", function() {
     child3.toggle();
     expect([child3]).toBeSelected();
-    expect([parent, child1]).toBePartiallySelected();
+    expect([parent, child1]).toBePartiallyFilled();
     expect([child2, child4]).toBeUnselected();
   });
 
-  it("should select child2 and partially select the parent", function() {
+  it("should select child2 and partially fill the parent", function() {
     child2.toggle();
     expect([child1,child3,child4]).toBeUnselected();
     expect([child2]).toBeSelected();
-    expect([parent]).toBePartiallySelected();
+    expect([parent]).toBePartiallyFilled();
   });
 
-  it("should select child1 and its children and partially select the parent", function() {
+  it("should select child1, its children and fill select the parent", function() {
     child1.toggle();
     expect([child3, child4]).toBeSelected();
-    expect([parent ]).toBePartiallySelected();
+    expect([parent ]).toBePartiallyFilled();
     expect([child2]).toBeUnselected();
   });
 
-  it("should select all when I toggle child4 and then toggle parent", function() {
+  it("should select all when I toggle child4 and then I toggle parent", function() {
     child4.toggle();
     parent.toggle();
     expect([parent, child1,child2,child3,child4]).toBeSelected();
@@ -69,7 +72,7 @@ describe("Node", function() {
     child3.toggle();
     child4.toggle();
     expect([child1,child3,child4]).toBeSelected();
-    expect([parent]).toBePartiallySelected();
+    expect([parent]).toBePartiallyFilled();
     expect([child2]).toBeUnselected();
   });
 
@@ -79,6 +82,43 @@ describe("Node", function() {
     child3.toggle();
     child4.toggle();
     expect([parent, child1,child2,child3,child4]).toBeUnselected();
+  });
+
+  it("asdf", function() {
+    child1.toggle();
+    child1.toggle();
+    child1.toggle();
+    expect([child1,child3,child4]).toBeSelected();
+  });
+
+  it("should restore the partially filled state after select all and unselect all", function() {
+    parent.toggle();
+    child4.toggle();
+    parent.toggle();
+    parent.toggle();
+    parent.toggle();
+    expect([child3]).toBeSelected();
+    expect([parent, child1]).toBePartiallyFilled();
+    expect([child4]).toBeUnselected();
+  });
+
+  describe("find_by_id()", function(){
+    it("should return the node by id", function() {
+      var node = parent.find_by_id("c3");
+      expect(node).toBe(child3);
+    });
+  });
+
+
+  describe("selectedNodes()", function(){
+    it("should return the selected nodes without parent nodes", function() {
+      parent.toggle();
+      child4.toggle();
+      var nodes = parent.selectedNodes();
+      expect(nodes.length).toBe(2);
+      expect(nodes).toContain(child2);
+      expect(nodes).toContain(child3);
+    });
   });
 
 
