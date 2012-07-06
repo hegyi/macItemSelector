@@ -37,10 +37,22 @@ $(document).ready(function() {
 ```
 
 ### Plugin initialization parameters
-* nodes: array of hashes (array of nodes for the initialization)
-* json: string (raw json for the initialization)
+* nodes: array of hashes (array of nodes for initialization)
+* json: string (raw json for initialization)
 * allowClickOnRow: boolean (allow to navigate by clicking on the row instead of just clicking on the text)
 * hasChildrenSymbol: `function() { return "string"; }` (overriding the default symbol for non-empty nodes)
 * nameStyle: `function(name) { return <b>name</b>; }` (overriding the default node name rendering)
+
+For more example check the `example.html` file!
+
+### CSS classes
+The plugin uses CSS to formatting its content. You can override the default look and feel by changing the following CSS classes.
+* `.mac-item-selector-column`: style of columns
+* `.mac-item-selector-row`: style of rows
+* `.mac-item-selector-checkbox`: style of checkboxes
+* `.mac-item-selector-checkbox-selected`: style of checkboxes when they are selected
+* `.mac-item-selector-checkbox-unselected`: style of checkboxes when they are unselected
+* `.mac-item-selector-checkbox-partially-filled`: style of checkboxes when they are partially-filled
+* `.mac-item-selector-has-more`: style of non-empty nodes
 
 
