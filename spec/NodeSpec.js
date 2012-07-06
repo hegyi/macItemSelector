@@ -3,7 +3,7 @@ describe("Node", function() {
   var parent, child1, child2, child3, child4;
   beforeEach(function() {
     element = $('<div></div>');
-    $(element).macItemSelector({json: {}});
+    $(element).macItemSelector({nodes: {}});
 
     parent = $(element).macItemSelector("createNode","p","parent");
     child1 = $(element).macItemSelector("createNode","c1","child1");
