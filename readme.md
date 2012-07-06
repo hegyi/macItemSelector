@@ -12,3 +12,26 @@ This is a single jQuery plugin for creating Mac like item selector.
 <script src="jquery.mac-item-selector.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="css/mac-item-selector.css"></link>
 ```
+
+* Use the plugin on an empty div selector:
+
+```javascript
+$(document).ready(function() {
+  // create example nodes
+  var exampleNodes = [
+    {
+       name: "component 1",
+       id: "c1",
+       children: [
+         {
+           name: "story 1",
+           id: "s1",
+           children: []
+         }
+       ]
+    }
+  ]
+
+  $("#my_conatiner").macItemSelector({nodes: exampleNodes });
+});
+```
