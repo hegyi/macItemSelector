@@ -406,7 +406,7 @@
     }
 
     function createNodesFromJson(json) {
-      var obj = jQuery.parseJSON(json);
+      var obj = JSON.parse(json);
       return createNodes(obj)
     }
 
