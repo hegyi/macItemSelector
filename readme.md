@@ -37,11 +37,11 @@ $(document).ready(function() {
 ```
 
 ### Plugin initialization parameters
-* nodes: array of hashes (array of nodes for initialization)
-* json: string (raw json for initialization)
-* allowClickOnRow: boolean (allow to navigate by clicking on the row instead of just clicking on the text)
-* hasChildrenSymbol: `function() { return "string"; }` (overriding the default symbol for non-empty nodes)
-* nameStyle: `function(name) { return <b>name</b>; }` (overriding the default node name rendering)
+* `nodes`: array of hashes (array of nodes for initialization)
+* `json`: string (raw json for initialization)
+* `allowClickOnRow`: boolean (allow to navigate by clicking on the row instead of just clicking on the text)
+* `hasChildrenSymbol`: `function() { return "string"; }` (overriding the default symbol for non-empty nodes)
+* `nameStyle`: `function(name) { return <b>name</b>; }` (overriding the default node name rendering)
 
 For more example check the `example.html` file!
 
