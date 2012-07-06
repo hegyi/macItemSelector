@@ -31,7 +31,7 @@
           $("#output").show();
         });
 
-      var json2 =  [
+      var obj =  [
         {
           name: "component 1",
           id: "c1",
@@ -125,14 +125,14 @@
         }
         ];
 
-        $("#container1").macItemSelector({json: json2 });
+        $("#container1").macItemSelector({nodes: obj });
 
-        $("#container2").macItemSelector({json: json2,
+        $("#container2").macItemSelector({nodes: obj,
           nameStyle: function(name) { return '<b>' + name +'</b>';},
           hasChildrenSymbol: function() { return "this row has children"; }
         });
 
-        $("#container3").macItemSelector({json: json2,
+        $("#container3").macItemSelector({nodes: obj,
           allowClickOnRow: true,
           hasChildrenSymbol: function() {return "&rarr;";}
         });

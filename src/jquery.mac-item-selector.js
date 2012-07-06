@@ -29,23 +29,28 @@
     var $el = $(element);
     var nodes = null;
     var current_id = null;
-    // merging the default options and the given options
+
     options = $.extend({}, $.fn[pluginName].defaults, options);
 
     function init() {
-      $(el).html('');
-      nodes = createNodesFromJson(options['json']);
-      $(el).html(draw());
+      if(options['json'] != null) {
+        nodes = createNodesFromJson(options['json']);
+      } else if(options['nodes'] != null) {
+        nodes = createNodes(options['nodes']);
+      } else {
+        console.error("'json' or 'nodes' input parameter is missing!");
+      }
+      render();
 
       $(el).on("click", 'div.mac-item-selector-name', function() {
         current_id = $(this).data("row-id");
-        $(el).html(draw());
+        render();
       });
 
       if(options['allowClickOnRow']) {
         $(el).on("click", 'div.mac-item-selector-row', function() {
           current_id = $(this).find('div.mac-item-selector-name:first').data("row-id");
-          $(el).html(draw());
+          render();
         });
       }
 
@@ -53,8 +58,21 @@
         current_id = $(this).data("row-id");
         var node = findNode(current_id);
         node.toggle();
-        $(el).html(draw());
+        render();
       });
+    }
+
+    function render() {
+      $(el).html(draw());
+    }
+
+    function toggle(id) {
+      var node = findNode(id);
+      console.log(node);
+      if(node != null) {
+        node.toggle();
+        render();
+      }
     }
 
     function findNode(id) {
@@ -68,6 +86,7 @@
           return node;
         }
       }
+      console.error("Cannot find node with the id: " + id);
       return null;
     }
 
@@ -387,7 +406,12 @@
     }
 
     function createNodesFromJson(json) {
-      return new NodeBuilder(json).build();
+      var obj = jQuery.parseJSON(json);
+      return createNodes(obj)
+    }
+
+    function createNodes(obj) {
+      return new NodeBuilder(obj).build();
     }
 
     function option (key, val) {
@@ -413,8 +437,10 @@
     return {
       option: option,
         destroy: destroy,
+        toggle: toggle,
         createNode: createNode,
         createNodesFromJson: createNodesFromJson,
+        createNodes: createNodes,
         selectedNodes: selectedNodes,
         selectedNodesAsJSON: selectedNodesAsJSON
     };
@@ -447,6 +473,8 @@
   };
 
   $.fn[pluginName].defaults = {
+    nodes: null,
+    json: null,
     allowClickOnRow: false,
     hasChildrenSymbol: function() { 
       return $('<div class="mac-item-selector-has-more mac-item-selector-right"></div>');

@@ -2,11 +2,11 @@ describe("NodeBuilder", function() {
   var element = null;
   beforeEach(function() {
     element = $('<div></div>');
-    $(element).macItemSelector();
+    $(element).macItemSelector({nodes: {}});
   });
 
-  it("should build a node tree from JSON", function(){
-    var json = [
+  it("should build a node tree from array of hashes", function(){
+    var obj = [
       {
         name: "component 1",
         id: "c1",
@@ -35,7 +35,7 @@ describe("NodeBuilder", function() {
         children: []
       }
     ]
-    nodes = $(element).macItemSelector("createNodesFromJson", json);
+    nodes = $(element).macItemSelector("createNodes", obj);
     expect(nodes[0].name).toBe("component 1");
     expect(nodes[1].name).toBe("component 2");
     expect(nodes[0].children[0].name).toBe("story 1");

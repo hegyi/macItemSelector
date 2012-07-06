@@ -61,7 +61,5 @@ The plugin uses CSS to formatting its content. You can override the default look
 * `selectedNodes`: returns the selected leaf nodes in an array
 * `selectedNodesAsJSON`: returns the selected leaf nodes as JSON string
 * `toggle(id)`: toggles a node with the given ID
-* `select(id)`: select a node with the given ID
-* `unselect(id)`: unselect a node with the given ID
 
 
