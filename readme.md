@@ -13,7 +13,7 @@ This is a single jQuery plugin for creating Mac like item selector.
 <link rel="stylesheet" type="text/css" href="css/mac-item-selector.css"></link>
 ```
 
-* Use the plugin on an *empty div* selector:
+* Use the plugin on an **empty div** selector:
 
 ```javascript
 $(document).ready(function() {
@@ -43,7 +43,7 @@ $(document).ready(function() {
 * `hasChildrenSymbol`: `function() { return "string"; }` (overriding the default symbol for non-empty nodes)
 * `nameStyle`: `function(name) { return <b>name</b>; }` (overriding the default node name rendering)
 
-For more example check the `example.html` file!
+For more example check `example.html` for more details!
 
 ### CSS classes
 The plugin uses CSS to formatting its content. You can override the default look and feel by changing the following CSS classes.
@@ -54,5 +54,14 @@ The plugin uses CSS to formatting its content. You can override the default look
 * `.mac-item-selector-checkbox-unselected`: style of checkboxes when they are unselected
 * `.mac-item-selector-checkbox-partially-filled`: style of checkboxes when they are partially-filled
 * `.mac-item-selector-has-more`: style of non-empty nodes
+
+### API methods
+
+* `destroy`: removes the plugin
+* `selectedNodes`: returns the selected leaf nodes in an array
+* `selectedNodesAsJSON`: returns the selected leaf nodes as JSON string
+* `toggle(id)`: toggles a node with the given ID
+* `select(id)`: select a node with the given ID
+* `unselect(id)`: unselect a node with the given ID
 
 
