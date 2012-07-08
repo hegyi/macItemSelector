@@ -27,10 +27,12 @@
   function Plugin(element, options) {
     var el = element;
     var $el = $(element);
-    var nodes = null;
-    var current_id = null;
+    var nodes = null; // array of parent nodes
+    var current_id = null; // currently clicked node
 
     options = $.extend({}, $.fn[pluginName].defaults, options);
+
+    // Constructor
 
     function init() {
       if(options['json'] != null) {
@@ -41,6 +43,8 @@
         console.error("'json' or 'nodes' input parameter is missing!");
       }
       render();
+
+      // Event delegations
 
       $(el).on("click", 'div.mac-item-selector-name', function() {
         current_id = $(this).data("row-id");
@@ -62,31 +66,10 @@
       });
     }
 
+    // Render related methods
+
     function render() {
       $(el).html(draw());
-    }
-
-    function toggle(id) {
-      var node = findNode(id);
-      if(node != null) {
-        node.toggle();
-        render();
-      }
-    }
-
-    function findNode(id) {
-      var root = nodes;
-      for(i in root) {
-        var node = null;
-        if(node == null) {
-          node = root[i].find_by_id(id);
-        }
-        if(node != null) {
-          return node;
-        }
-      }
-      console.error("Cannot find node with the id: " + id);
-      return null;
     }
 
     function drawText(node) {
@@ -142,6 +125,8 @@
       }
     }
 
+    // Node object
+
     function Node(id, name) {
       this.id = id;
       this.name = name;
@@ -155,7 +140,7 @@
 
     Node.prototype.toggle = function() {
       if(this.isUnselected()) {
-        if(this.storage != null) {
+        if(this.hasStoredState()) {
           this.restoreState();
           this.restoreChildren();
           this.notifyParent();
@@ -294,6 +279,10 @@
       return this.children.length != 0;
     };
 
+    Node.prototype.hasStoredState = function() {
+      return this.storage != null;
+    };
+
     Node.prototype.hasParent = function() {
       return this.parent != null;
     };
@@ -352,6 +341,8 @@
       return null;
     };
 
+    // NodeBuilder object
+
     function NodeBuilder(json) {
       this.json = json;
     }
@@ -380,6 +371,31 @@
           this.buildNode(child, children[i]['children']);
         }
       }
+    }
+
+    // public API calls
+
+    function toggle(id) {
+      var node = findNode(id);
+      if(node != null) {
+        node.toggle();
+        render();
+      }
+    }
+
+    function findNode(id) {
+      var root = nodes;
+      for(i in root) {
+        var node = null;
+        if(node == null) {
+          node = root[i].find_by_id(id);
+        }
+        if(node != null) {
+          return node;
+        }
+      }
+      console.error("Cannot find node with the id: " + id);
+      return null;
     }
 
     function selectedNodes() {

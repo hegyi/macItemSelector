@@ -107,6 +107,11 @@ describe("Node", function() {
       var node = parent.find_by_id("c3");
       expect(node).toBe(child3);
     });
+
+    it("should return null when the node id does not exist", function() {
+      var node = parent.find_by_id("foo");
+      expect(node).toBe(null);
+    });
   });
 
 
@@ -118,6 +123,11 @@ describe("Node", function() {
       expect(nodes.length).toBe(2);
       expect(nodes).toContain(child2);
       expect(nodes).toContain(child3);
+    });
+
+    it("should return empty array when nothing is selected", function() {
+      var nodes = parent.selectedNodes();
+      expect(nodes.length).toBe(0);
     });
   });
 

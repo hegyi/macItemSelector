@@ -1,3 +1,24 @@
+#container2 .mac-item-selector-checkbox {
+  height: 13px;
+  width: 13px;
+  border: 0;
+}
+
+#container2 .mac-item-selector-checkbox-unselected {
+  background: url(../img/3-state-checkbox.gif) 0 0 no-repeat;
+  background-position: 0 0px;
+}
+
+#container2 .mac-item-selector-checkbox-selected {
+  background: url(../img/3-state-checkbox.gif) 0 0 no-repeat;
+  background-position: 0 -13px;
+}
+
+#container2 .mac-item-selector-checkbox-partially-filled {
+  background: url(../img/3-state-checkbox.gif) 0 0 no-repeat;
+  background-position: 0 -26px;
+}
+
 #container3 .mac-item-selector-column {
   font-size: 18px;
   font-family: arial;
